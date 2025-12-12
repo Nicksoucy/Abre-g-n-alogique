@@ -12,7 +12,8 @@ import {
     ChevronRight,
     Edit3,
     Trash2,
-    Link as LinkIcon
+    Link as LinkIcon,
+    Save
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -27,6 +28,7 @@ interface DetailPanelProps {
     onUpdate: (field: keyof Person, value: string) => void;
     onDelete?: () => void;
     onLink?: (targetId: string, relation: 'parent' | 'child' | 'spouse') => void;
+    onSave?: () => void;
     allPersons?: Person[];
 }
 
@@ -41,6 +43,7 @@ export default function DetailPanel({
     onUpdate,
     onDelete,
     onLink,
+    onSave,
     allPersons
 }: DetailPanelProps) {
     const initials = person.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
@@ -218,8 +221,16 @@ export default function DetailPanel({
                     </div>
                 </div>
 
-                {/* 7. Danger Zone */}
-                <div className="mt-8 pt-8 border-t border-slate-100">
+                {/* 7. Save and Danger Zone */}
+                <div className="mt-8 pt-8 border-t border-slate-100 flex flex-col gap-3">
+                    <button
+                        onClick={onSave}
+                        className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-md hover:shadow-lg"
+                    >
+                        <Save size={16} />
+                        Sauvegarder les modifications
+                    </button>
+
                     <button
                         onClick={onDelete}
                         className="w-full py-3 rounded-xl border border-red-100 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 font-bold text-sm flex items-center justify-center gap-2 transition-colors"
