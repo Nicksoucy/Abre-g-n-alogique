@@ -102,6 +102,29 @@ export default function App() {
     setEdges(layoutedEdges);
   }, []);
 
+  // Center on Me Handler
+  const centerOnRoot = useCallback(() => {
+    if (reactFlowInstance && nodes.length > 0) {
+      const rootNode = nodes.find(n => n.id === 'p1');
+      if (rootNode) {
+        // Node width is 250 (from layout.ts), height is 160.
+        // We want to center on the MIDDLE of the node.
+        // ReactFlow view center x,y.
+        const x = rootNode.position.x + 125;
+        const y = rootNode.position.y + 80;
+        reactFlowInstance.setCenter(x, y, { zoom: 1, duration: 1000 });
+      }
+    }
+  }, [reactFlowInstance, nodes]);
+
+  // Initial Centering Effect
+  useEffect(() => {
+    if (reactFlowInstance && nodes.length > 0) {
+      // Small delay to ensure render
+      setTimeout(centerOnRoot, 100);
+    }
+  }, [reactFlowInstance, nodes.length, centerOnRoot]);
+
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
@@ -155,19 +178,7 @@ export default function App() {
     }
   };
 
-  // Center on Me Handler
-  const centerOnRoot = useCallback(() => {
-    if (reactFlowInstance && nodes.length > 0) {
-      const rootNode = nodes.find(n => n.id === 'p1');
-      if (rootNode) {
-        // Node width is 250 (from layout.ts), height is 160.
-        // We want to center on the MIDDLE of the node.
-        const x = rootNode.position.x + 125;
-        const y = rootNode.position.y + 80;
-        reactFlowInstance.setCenter(x, y, { zoom: 1, duration: 1000 });
-      }
-    }
-  }, [reactFlowInstance, nodes]);
+
 
   const handleAdd = (type: 'parent' | 'child' | 'spouse') => {
     if (!selectedPerson) return;
