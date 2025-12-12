@@ -117,13 +117,7 @@ export default function App() {
     }
   }, [reactFlowInstance, nodes]);
 
-  // Initial Centering Effect
-  useEffect(() => {
-    if (reactFlowInstance && nodes.length > 0) {
-      // Small delay to ensure render
-      setTimeout(centerOnRoot, 100);
-    }
-  }, [reactFlowInstance, nodes.length, centerOnRoot]);
+
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
@@ -269,7 +263,7 @@ export default function App() {
           onNodeClick={onNodeClick}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
-          // fitView
+          fitView
           minZoom={0.05}
           maxZoom={1.5}
           attributionPosition="bottom-left"
