@@ -30,7 +30,19 @@ interface DetailPanelProps {
     allPersons?: Person[];
 }
 
-export default function DetailPanel({ person, generation, onClose, onAddParent, onAddChild, onAddSpouse, onRelationClick, onUpdate }: DetailPanelProps) {
+export default function DetailPanel({
+    person,
+    generation,
+    onClose,
+    onAddParent,
+    onAddChild,
+    onAddSpouse,
+    onRelationClick,
+    onUpdate,
+    onDelete,
+    onLink,
+    allPersons
+}: DetailPanelProps) {
     const initials = person.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
     const genLabel = getGenLabel(generation);
     const badgeClass = getBadgeColor(generation);
