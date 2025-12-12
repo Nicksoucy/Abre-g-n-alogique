@@ -375,6 +375,7 @@ export default function App() {
           onUpdate={handleUpdate}
           onDelete={handleDelete}
           onLink={handleLink}
+          onSave={handleSave}
           allPersons={nodes.map(n => n.data.person)} // Pass all persons for the dropdown
         />
       )}
