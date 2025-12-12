@@ -26,7 +26,7 @@
       "children": [
         "p1"
       ],
-      "raw_dates": ""
+      "raw_dates": "1954-"
     },
     {
       "id": "p3",
@@ -42,7 +42,7 @@
       "children": [
         "p1"
       ],
-      "raw_dates": ""
+      "raw_dates": "1959-"
     },
     {
       "id": "p4",
@@ -141,8 +141,8 @@
     },
     {
       "id": "p10",
-      "name": "Père de Jacqueline Massu (fils de Gaspard-Aimé Massue)",
-      "notes": "GG-PARENTS",
+      "name": "Père de Jacqueline Massu",
+      "notes": "Fils de Gaspard-Aimé Massue",
       "parents": [
         "p18",
         "p19"
@@ -157,8 +157,8 @@
     },
     {
       "id": "p11",
-      "name": "Mère Massu (nom non confirmé)",
-      "notes": "GG-PARENTS",
+      "name": "Mère Massu (nom inconnu)",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p10"
@@ -171,7 +171,7 @@
     {
       "id": "p12",
       "name": "Joseph Soucy",
-      "notes": "GG-PARENTS",
+      "notes": "Cultivateur à St-Alexandre puis Trois-Rivières. Inhumé à St-Alexandre.",
       "parents": [
         "p20",
         "p21"
@@ -180,8 +180,6 @@
         "p13"
       ],
       "children": [
-        "p6",
-        "p6",
         "p6"
       ],
       "raw_dates": "1898–1954"
@@ -189,7 +187,7 @@
     {
       "id": "p13",
       "name": "Delphine Dumais",
-      "notes": "GG-PARENTS",
+      "notes": "Née et décédée à Saint-Alexandre.",
       "parents": [
         "p22",
         "p23"
@@ -198,7 +196,6 @@
         "p12"
       ],
       "children": [
-        "p6",
         "p6"
       ],
       "raw_dates": "1899–1990"
@@ -206,7 +203,7 @@
     {
       "id": "p14",
       "name": "Charles-Arthur Lamothe",
-      "notes": "GG-PARENTS",
+      "notes": "Cultivateur à St-Louis-de-France (Mauricie).",
       "parents": [
         "p24",
         "p25"
@@ -215,16 +212,14 @@
         "p15"
       ],
       "children": [
-        "p7",
-        "p7",
         "p7"
       ],
-      "raw_dates": "1904–1983"
+      "raw_dates": "~1900–1983"
     },
     {
       "id": "p15",
       "name": "Léona Germain",
-      "notes": "GG-PARENTS",
+      "notes": "Décédée à Saint-Luc-de-Vincennes.",
       "parents": [
         "p26",
         "p27"
@@ -233,7 +228,6 @@
         "p14"
       ],
       "children": [
-        "p7",
         "p7"
       ],
       "raw_dates": "1907–2001"
@@ -241,7 +235,7 @@
     {
       "id": "p16",
       "name": "Joseph Legault",
-      "notes": "GGG-PARENTS",
+      "notes": "Cultivateur à Les Cèdres/Vaudreuil.",
       "parents": [
         "p44",
         "p45"
@@ -250,7 +244,6 @@
         "p17"
       ],
       "children": [
-        "p4",
         "p8"
       ],
       "raw_dates": "1836–1922"
@@ -258,7 +251,7 @@
     {
       "id": "p17",
       "name": "Alexina Onésime Besner",
-      "notes": "GGG-PARENTS",
+      "notes": "Mariée en 1861 à Vaudreuil.",
       "parents": [],
       "spouses": [
         "p16"
@@ -270,8 +263,8 @@
     },
     {
       "id": "p18",
-      "name": "Gaspard-Aimé Massue  – Seigneur de Varennes",
-      "notes": "GGG-PARENTS",
+      "name": "Gaspard-Aimé Massue",
+      "notes": "Seigneur de Varennes, Député.",
       "parents": [
         "p54"
       ],
@@ -279,7 +272,6 @@
         "p19"
       ],
       "children": [
-        "p5",
         "p10"
       ],
       "raw_dates": "1812–1875"
@@ -287,7 +279,7 @@
     {
       "id": "p19",
       "name": "Apolline Lussier",
-      "notes": "GGG-PARENTS",
+      "notes": "Mariée en 1843 à Varennes.",
       "parents": [],
       "spouses": [
         "p18"
@@ -295,12 +287,12 @@
       "children": [
         "p10"
       ],
-      "raw_dates": ""
+      "raw_dates": "1822–?"
     },
     {
       "id": "p20",
       "name": "Théodore Soucy",
-      "notes": "GGG-PARENTS",
+      "notes": "Cultivateur à St-Alexandre.",
       "parents": [
         "p29",
         "p30"
@@ -309,28 +301,56 @@
         "p21"
       ],
       "children": [
-        "p6",
         "p12"
       ],
-      "raw_dates": ""
+      "raw_dates": "1871–1919"
     },
     {
       "id": "p21",
       "name": "Célina Landry",
-      "notes": "GGG-PARENTS",
-      "parents": [],
+      "notes": "Originaire de St-André/St-Alexandre. Décédée à 95 ans.",
+      "parents": [
+        "p_landry_fx",
+        "p_landry_ang"
+      ],
       "spouses": [
         "p20"
       ],
       "children": [
         "p12"
       ],
+      "raw_dates": "1871–1966"
+    },
+    {
+      "id": "p_landry_fx",
+      "name": "François-Xavier Landry",
+      "notes": "Marié en 1852 à Saint-André",
+      "parents": [],
+      "spouses": [
+        "p_landry_ang"
+      ],
+      "children": [
+        "p21"
+      ],
+      "raw_dates": ""
+    },
+    {
+      "id": "p_landry_ang",
+      "name": "Angèle Gagné",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "p_landry_fx"
+      ],
+      "children": [
+        "p21"
+      ],
       "raw_dates": ""
     },
     {
       "id": "p22",
-      "name": "Démétrius / Irénée Dumais",
-      "notes": "GGG-PARENTS",
+      "name": "Irénée Dumais",
+      "notes": "Cultivateur à St-Alexandre.",
       "parents": [],
       "spouses": [
         "p23"
@@ -338,12 +358,12 @@
       "children": [
         "p13"
       ],
-      "raw_dates": ""
+      "raw_dates": "1867–?"
     },
     {
       "id": "p23",
-      "name": "Anna Albert",
-      "notes": "GGG-PARENTS",
+      "name": "Pamela Bélanger",
+      "notes": "Née à St-Antonin, inhumée à St-Alexandre.",
       "parents": [],
       "spouses": [
         "p22"
@@ -351,40 +371,38 @@
       "children": [
         "p13"
       ],
-      "raw_dates": ""
+      "raw_dates": "1867–1915"
     },
     {
       "id": "p24",
-      "name": "Omer Lamothe (probable)",
-      "notes": "GGG-PARENTS",
+      "name": "Arthur Lamothe (Probable)",
+      "notes": "Possiblement Arthur-Joseph Lamothe.",
       "parents": [],
       "spouses": [
         "p25"
       ],
       "children": [
-        "p7",
         "p14"
       ],
       "raw_dates": ""
     },
     {
       "id": "p25",
-      "name": "Éveline Caron (probable)",
-      "notes": "GGG-PARENTS",
+      "name": "Mère Lamothe (Inconnue)",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p24"
       ],
       "children": [
-        "p7",
         "p14"
       ],
       "raw_dates": ""
     },
     {
       "id": "p26",
-      "name": "Alexis Germain (probable)",
-      "notes": "GGG-PARENTS",
+      "name": "Napoléon Germain (St-Germain)",
+      "notes": "Hypothèse familiale.",
       "parents": [],
       "spouses": [
         "p27"
@@ -396,8 +414,8 @@
     },
     {
       "id": "p27",
-      "name": "Hermine Dubé (probable)",
-      "notes": "GGG-PARENTS",
+      "name": "Marie (Mère de Léona)",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p26"
@@ -410,7 +428,7 @@
     {
       "id": "p29",
       "name": "Polycarpe Soucy",
-      "notes": "Ancêtre",
+      "notes": "Aussi prénommé Louis-Polycarpe.",
       "parents": [
         "p31",
         "p32"
@@ -421,12 +439,12 @@
       "children": [
         "p20"
       ],
-      "raw_dates": "1833"
+      "raw_dates": "1849–1927"
     },
     {
       "id": "p30",
       "name": "Malvina Pelletier",
-      "notes": "Ancêtre",
+      "notes": "Mariée en 1867 à St-Alexandre.",
       "parents": [],
       "spouses": [
         "p29"
@@ -439,7 +457,7 @@
     {
       "id": "p31",
       "name": "Alexis Soucy",
-      "notes": "Ancêtre",
+      "notes": "Cultivateur à Saint-André puis Saint-Alexandre.",
       "parents": [
         "p33",
         "p34"
@@ -450,12 +468,12 @@
       "children": [
         "p29"
       ],
-      "raw_dates": "1799"
+      "raw_dates": "1799–1884"
     },
     {
       "id": "p32",
-      "name": "Nathalie Dumont",
-      "notes": "Ancêtre",
+      "name": "Nathalie Guéret dit Dumont",
+      "notes": "Mariée en 1822 à Saint-André.",
       "parents": [],
       "spouses": [
         "p31"
@@ -468,7 +486,7 @@
     {
       "id": "p33",
       "name": "Michel Soucy",
-      "notes": "Ancêtre",
+      "notes": "Marié en 1797 à St-André.",
       "parents": [
         "p35",
         "p36"
@@ -479,12 +497,12 @@
       "children": [
         "p31"
       ],
-      "raw_dates": "1770"
+      "raw_dates": "1770–?"
     },
     {
       "id": "p34",
-      "name": "Catherine Paradis",
-      "notes": "Ancêtre",
+      "name": "Marie-Catherine Paradis",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p33"
@@ -497,7 +515,7 @@
     {
       "id": "p35",
       "name": "André Soucy",
-      "notes": "Ancêtre",
+      "notes": "Marié en 1758 à St-Louis de Kamouraska.",
       "parents": [
         "p37",
         "p38"
@@ -508,12 +526,12 @@
       "children": [
         "p33"
       ],
-      "raw_dates": "1735"
+      "raw_dates": "~1730–?"
     },
     {
       "id": "p36",
-      "name": "Catherine Nadeau",
-      "notes": "Ancêtre",
+      "name": "Marie-Catherine Nadeau",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p35"
@@ -525,8 +543,8 @@
     },
     {
       "id": "p37",
-      "name": "Joseph Soucy",
-      "notes": "Ancêtre",
+      "name": "Joseph Soucy dit Lavigne",
+      "notes": "Vécu à Rivière-Ouelle et Ste-Anne-de-la-Pocatière.",
       "parents": [
         "p39",
         "p40"
@@ -537,12 +555,12 @@
       "children": [
         "p35"
       ],
-      "raw_dates": "1704"
+      "raw_dates": "1704–1745"
     },
     {
       "id": "p38",
-      "name": "Madeleine Mignier dit Lagacé",
-      "notes": "Ancêtre",
+      "name": "Marie-Madeleine Mignier dit Lagacé",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p37"
@@ -554,8 +572,8 @@
     },
     {
       "id": "p39",
-      "name": "Pierre Soucy dit Lavigne",
-      "notes": "Ancêtre",
+      "name": "Pierre Soucy",
+      "notes": "L'un des premiers habitants de Rivière-Ouelle.",
       "parents": [
         "p41",
         "p42"
@@ -566,12 +584,12 @@
       "children": [
         "p37"
       ],
-      "raw_dates": "1673"
+      "raw_dates": "~1673–1760"
     },
     {
       "id": "p40",
-      "name": "Élisabeth Fouquereau",
-      "notes": "Ancêtre",
+      "name": "Élisabeth-Ursule Fouquereau",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p39"
@@ -583,8 +601,8 @@
     },
     {
       "id": "p41",
-      "name": "Jean Soucy dit Lavigne (soldat Carignan 1665)",
-      "notes": "Ancêtre",
+      "name": "Jean Soucy dit Lavigne",
+      "notes": "Soldat du régiment Carignan-Salières (Cie La Fredière) arrivé en 1665. S'établit à l'Île-aux-Oies.",
       "parents": [],
       "spouses": [
         "p42"
@@ -592,12 +610,12 @@
       "children": [
         "p39"
       ],
-      "raw_dates": ""
+      "raw_dates": "1641–~1678"
     },
     {
       "id": "p42",
-      "name": "Jeanne Savonnet – Fille du Roi (arrivée 1670)",
-      "notes": "Ancêtre",
+      "name": "Jeanne Savonnet",
+      "notes": "Fille du Roi (arrivée 1670). Mère de tous les Soucy d'Amérique.",
       "parents": [],
       "spouses": [
         "p41"
@@ -610,7 +628,7 @@
     {
       "id": "p44",
       "name": "Joseph Legault",
-      "notes": "Ancêtre",
+      "notes": "Cultivateur à Les Cèdres.",
       "parents": [
         "p46",
         "p47"
@@ -621,12 +639,12 @@
       "children": [
         "p16"
       ],
-      "raw_dates": "1801"
+      "raw_dates": "1801–1874"
     },
     {
       "id": "p45",
       "name": "Marie Séguin",
-      "notes": "Ancêtre",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p44"
@@ -634,12 +652,12 @@
       "children": [
         "p16"
       ],
-      "raw_dates": ""
+      "raw_dates": "1811–1899"
     },
     {
       "id": "p46",
-      "name": "Joseph Legault",
-      "notes": "Ancêtre",
+      "name": "Joseph Legault dit Deslauriers",
+      "notes": "Né à Pointe-Claire, établi à Vaudreuil/Lachine.",
       "parents": [
         "p48",
         "p49"
@@ -650,12 +668,12 @@
       "children": [
         "p44"
       ],
-      "raw_dates": "1762"
+      "raw_dates": "1762–1837"
     },
     {
       "id": "p47",
       "name": "Agathe Rivard dit Lavigne",
-      "notes": "Ancêtre",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p46"
@@ -663,12 +681,12 @@
       "children": [
         "p44"
       ],
-      "raw_dates": ""
+      "raw_dates": "1756–1837"
     },
     {
       "id": "p48",
-      "name": "Joseph-Marie Legault",
-      "notes": "Ancêtre",
+      "name": "Joseph-Marie Legault dit Deslauriers",
+      "notes": "",
       "parents": [
         "p50",
         "p51"
@@ -679,12 +697,12 @@
       "children": [
         "p46"
       ],
-      "raw_dates": "~1730"
+      "raw_dates": "~1730–?"
     },
     {
       "id": "p49",
       "name": "Agathe-Amable Pilon",
-      "notes": "Ancêtre",
+      "notes": "",
       "parents": [],
       "spouses": [
         "p48"
@@ -696,8 +714,8 @@
     },
     {
       "id": "p50",
-      "name": "Noël Legault dit Deslauriers  – immigrant breton",
-      "notes": "Ancêtre",
+      "name": "Noël Legault dit Deslauriers",
+      "notes": "Immigrant breton (Irvillac), soldat arrivé en 1695. Pionnier de Pointe-Claire.",
       "parents": [],
       "spouses": [
         "p51"
@@ -710,7 +728,7 @@
     {
       "id": "p51",
       "name": "Marie Bénard",
-      "notes": "Ancêtre",
+      "notes": "Fille de Mathurin Bénard et Marguerite Viard (Fille du Roi).",
       "parents": [
         "p52"
       ],
@@ -724,19 +742,19 @@
     },
     {
       "id": "p52",
-      "name": "Marguerite Viard – Fille du Roi",
-      "notes": "Ancêtre",
+      "name": "Marguerite Viard",
+      "notes": "Fille du Roi (arrivée de Paris).",
       "parents": [],
       "spouses": [],
       "children": [
         "p51"
       ],
-      "raw_dates": "1671"
+      "raw_dates": "1652–1715"
     },
     {
       "id": "p54",
       "name": "Aignan-Aimé Massue",
-      "notes": "Ancêtre",
+      "notes": "Co-seigneur de Varennes, député (1824-27).",
       "parents": [
         "p55"
       ],
@@ -749,26 +767,56 @@
     {
       "id": "p55",
       "name": "Gaspard Massue",
-      "notes": "Ancêtre",
+      "notes": "Marchand, co-seigneur de Varennes.",
       "parents": [
         "p56"
       ],
-      "spouses": [],
+      "spouses": [
+        "p_huet"
+      ],
       "children": [
         "p54"
       ],
       "raw_dates": "1750–1792"
     },
     {
-      "id": "p56",
-      "name": "Nicolas Massue  – immigrant originaire d'Orléans",
-      "notes": "Ancêtre",
+      "id": "p_huet",
+      "name": "Josephte Huet dit Dulude",
+      "notes": "",
       "parents": [],
-      "spouses": [],
+      "spouses": [
+        "p55"
+      ],
+      "children": [
+        "p54"
+      ],
+      "raw_dates": ""
+    },
+    {
+      "id": "p56",
+      "name": "Nicolas Massue",
+      "notes": "Immigrant originaire d'Orléans (France).",
+      "parents": [],
+      "spouses": [
+        "p_vallee"
+      ],
       "children": [
         "p55"
       ],
       "raw_dates": "1708–1787"
+    },
+    {
+      "id": "p_vallee",
+      "name": "Marie-Madeleine Vallée",
+      "notes": "",
+      "parents": [],
+      "spouses": [
+        "p56"
+      ],
+      "children": [
+        "p55"
+      ],
+      "raw_dates": ""
     }
   ]
 }

@@ -15,8 +15,9 @@ import familyData from './family_data.json';
 import { buildGraphFromData, getLayoutedElements } from './utils/layout';
 import PersonNode from './components/PersonNode';
 import DetailPanel from './components/DetailPanel';
+import StoryPanel from './components/StoryPanel';
 import type { Person } from './types';
-import { Download, Crosshair } from 'lucide-react'; // Added Crosshair for "Center on Me"
+import { Download, Crosshair, Save, BookOpen } from 'lucide-react';
 
 const nodeTypes = {
   person: PersonNode,
@@ -24,7 +25,6 @@ const nodeTypes = {
 
 // Initial Data Processing
 const data = familyData as { persons: Person[] };
-// Removed top-level layout optim to prevent hydration mismatch/unused var issues
 
 // Helper to calculate generations (BFS from root)
 const calculateGenerations = (persons: Person[], rootId: string) => {
@@ -32,18 +32,6 @@ const calculateGenerations = (persons: Person[], rootId: string) => {
   const queue: { id: string, gen: number }[] = [{ id: rootId, gen: 0 }];
   const visited = new Set<string>([rootId]);
   generationMap.set(rootId, 0);
-
-  // Traverse Parents (Generation +1) and Children (Generation -1)
-  // Actually commonly: Ancestors are negative or positive? 
-  // Let's say Root = 0. Parents = 1. Grandparents = 2. Children = -1.
-
-  // We need full traversal. 
-  // Let's iterate multiple times to propagate.
-  // Better: Build adjacency list first? 
-  // For now, simpler approach: Just distance from root.
-
-  // To handle the whole graph properly including disconnected parts (if any left), 
-  // we might need to look at everyone. But assumed connected.
 
   let head = 0;
   while (head < queue.length) {
@@ -85,6 +73,7 @@ export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null); // For Zoom/Center
 
   useEffect(() => {
@@ -143,6 +132,29 @@ export default function App() {
     link.click();
   };
 
+  // Save via API
+  const handleSave = async () => {
+    try {
+      const payload = { persons: nodes.map(n => n.data.person) };
+      const response = await fetch('/api/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload, null, 2)
+      });
+
+      if (response.ok) {
+        alert("Sauvegardé avec succès !");
+      } else {
+        alert("Erreur lors de la sauvegarde.");
+      }
+    } catch (error) {
+      console.error("Save error:", error);
+      alert("Erreur réseau lors de la sauvegarde.");
+    }
+  };
+
   // Center on Me Handler
   const centerOnRoot = () => {
     if (reactFlowInstance) {
@@ -174,7 +186,6 @@ export default function App() {
       // Add this new person as parent of selected
       newPerson.children = [selectedPerson.id];
       selectedPerson.parents.push(newId);
-      // Assuming single parent addition doesn't automatically imply spouse of existing parent for simplicity now
     } else if (type === 'child') {
       // Add this new person as child of selected
       newPerson.parents = [selectedPerson.id];
@@ -253,17 +264,33 @@ export default function App() {
           <MiniMap style={{ height: 120 }} zoomable pannable />
           <Background gap={16} size={1} color="#e2e8f0" />
 
+          <Panel position="top-left" className="p-2">
+            <button
+              onClick={() => setIsStoryOpen(true)}
+              className="bg-white p-3 rounded-xl shadow-lg hover:bg-indigo-50 text-indigo-700 hover:text-indigo-900 font-bold flex items-center gap-2 transition-all border border-indigo-100"
+            >
+              <BookOpen size={20} />
+              <span>Récits de Famille</span>
+            </button>
+          </Panel>
+
           <Panel position="top-right" className="flex gap-2 p-2">
             <button onClick={centerOnRoot} className="bg-white p-2 rounded-lg shadow hover:bg-slate-50 text-indigo-600 tooltip" title="Centrer sur moi">
               <Crosshair size={20} />
             </button>
             <button onClick={() => onLayout('BT')} className="px-4 py-2 bg-white rounded-lg shadow hover:bg-slate-50 font-medium text-sm">Réorganiser</button>
+            <button onClick={handleSave} className="px-4 py-2 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 font-medium text-sm flex items-center gap-2">
+              <Save size={16} /> Sauvegarder
+            </button>
             <button onClick={handleExport} className="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 font-medium text-sm flex items-center gap-2">
               <Download size={16} /> Exporter
             </button>
           </Panel>
         </ReactFlow>
       </div>
+
+      {/* Story Panel */}
+      <StoryPanel isOpen={isStoryOpen} onClose={() => setIsStoryOpen(false)} />
 
       {/* Modern Detail Panel Component */}
       {selectedPerson && (
