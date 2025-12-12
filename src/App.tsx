@@ -269,7 +269,6 @@ export default function App() {
           onNodeClick={onNodeClick}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
-          nodeTypes={nodeTypes}
           // fitView
           minZoom={0.05}
           maxZoom={1.5}
