@@ -8,8 +8,13 @@
         "p2",
         "p3"
       ],
-      "spouses": [],
-      "children": [],
+      "spouses": [
+        "new-1765568277886",
+        "new-1765568278920"
+      ],
+      "children": [
+        "new-1765568275921"
+      ],
       "raw_dates": ""
     },
     {
@@ -817,6 +822,64 @@
         "p55"
       ],
       "raw_dates": ""
+    },
+    {
+      "id": "new-1765568275921",
+      "name": "Nouveau Membre",
+      "raw_dates": "",
+      "notes": "",
+      "parents": [
+        "p1"
+      ],
+      "children": [
+        "new-1765569501916",
+        "new-1765569502666"
+      ],
+      "spouses": []
+    },
+    {
+      "id": "new-1765568277886",
+      "name": "Nouveau Membre",
+      "raw_dates": "",
+      "notes": "",
+      "parents": [],
+      "children": [],
+      "spouses": [
+        "p1"
+      ]
+    },
+    {
+      "id": "new-1765568278920",
+      "name": "Nouveau Membre",
+      "raw_dates": "",
+      "notes": "",
+      "parents": [],
+      "children": [],
+      "spouses": [
+        "p1"
+      ]
+    },
+    {
+      "id": "new-1765569501916",
+      "name": "Nouveau Membre",
+      "raw_dates": "",
+      "notes": "",
+      "parents": [
+        "new-1765568275921"
+      ],
+      "children": [],
+      "spouses": []
+    },
+    {
+      "id": "new-1765569502666",
+      "name": "Nouveau Membre",
+      "raw_dates": "",
+      "notes": "",
+      "parents": [
+        "new-1765568275921"
+      ],
+      "children": [],
+      "spouses": []
     }
   ]
 }

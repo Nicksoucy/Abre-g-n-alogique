@@ -47,6 +47,10 @@ export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'B
 
     dagre.layout(dagreGraph);
 
+    // Get root node position to center the tree
+    const rootNode = dagreGraph.node('p1');
+    const xShift = rootNode ? rootNode.x : 0;
+
     nodes.forEach((node) => {
         const nodeWithPosition = dagreGraph.node(node.id);
         // Safety check if dagre failed to node (shouldn't happen)
@@ -55,8 +59,9 @@ export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'B
         node.targetPosition = direction === 'BT' ? Position.Bottom : Position.Top;
         node.sourcePosition = direction === 'BT' ? Position.Top : Position.Bottom;
 
+        // Shift X so root is at 0
         node.position = {
-            x: nodeWithPosition.x - nodeWidth / 2,
+            x: (nodeWithPosition.x - xShift) - nodeWidth / 2,
             y: nodeWithPosition.y - nodeHeight / 2,
         };
     });
