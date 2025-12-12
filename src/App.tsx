@@ -156,15 +156,18 @@ export default function App() {
   };
 
   // Center on Me Handler
-  const centerOnRoot = () => {
-    if (reactFlowInstance) {
-      // Root is p1
+  const centerOnRoot = useCallback(() => {
+    if (reactFlowInstance && nodes.length > 0) {
       const rootNode = nodes.find(n => n.id === 'p1');
       if (rootNode) {
-        reactFlowInstance.setCenter(rootNode.position.x, rootNode.position.y, { zoom: 1, duration: 1000 });
+        // Node width is 250 (from layout.ts), height is 160.
+        // We want to center on the MIDDLE of the node.
+        const x = rootNode.position.x + 125;
+        const y = rootNode.position.y + 80;
+        reactFlowInstance.setCenter(x, y, { zoom: 1, duration: 1000 });
       }
     }
-  };
+  }, [reactFlowInstance, nodes]);
 
   const handleAdd = (type: 'parent' | 'child' | 'spouse') => {
     if (!selectedPerson) return;
@@ -255,7 +258,8 @@ export default function App() {
           onNodeClick={onNodeClick}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
-          fitView
+          nodeTypes={nodeTypes}
+          // fitView
           minZoom={0.05}
           maxZoom={1.5}
           attributionPosition="bottom-left"
