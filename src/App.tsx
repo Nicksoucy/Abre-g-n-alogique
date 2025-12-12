@@ -226,18 +226,12 @@ export default function App() {
 
   const handleUpdate = (field: keyof Person, value: string) => {
     if (!selectedPerson) return;
-
-    // Update local object (immediate feedback)
     const updatedPerson = { ...selectedPerson, [field]: value };
     setSelectedPerson(updatedPerson);
-
-    // Update global data (source of truth)
     const pIndex = data.persons.findIndex(p => p.id === selectedPerson.id);
     if (pIndex !== -1) {
       data.persons[pIndex] = updatedPerson;
     }
-
-    // Update nodes to reflect changes (e.g. name change on node card)
     setNodes((nds) =>
       nds.map((node) => {
         if (node.id === selectedPerson.id) {
@@ -249,6 +243,74 @@ export default function App() {
         return node;
       })
     );
+  };
+
+  // Delete Person
+  const handleDelete = () => {
+    if (!selectedPerson) return;
+    if (!confirm(`Êtes-vous sûr de vouloir supprimer ${selectedPerson.name} ?`)) return;
+
+    const idToDelete = selectedPerson.id;
+
+    // 1. Remove from main array
+    data.persons = data.persons.filter(p => p.id !== idToDelete);
+
+    // 2. Clean up references in other persons
+    data.persons.forEach(p => {
+      p.parents = p.parents.filter(id => id !== idToDelete);
+      p.children = p.children.filter(id => id !== idToDelete);
+      p.spouses = p.spouses.filter(id => id !== idToDelete);
+    });
+
+    // 3. Clear selection and rebuild
+    setSelectedPerson(null);
+    refreshGraph();
+  };
+
+  // Link two existing persons
+  const handleLink = (targetId: string, relation: 'parent' | 'child' | 'spouse') => {
+    if (!selectedPerson) return;
+    const currentId = selectedPerson.id;
+
+    // Avoid self-linking
+    if (currentId === targetId) return;
+
+    const targetPerson = data.persons.find(p => p.id === targetId);
+    const currentPerson = data.persons.find(p => p.id === currentId);
+    if (!targetPerson || !currentPerson) return;
+
+    // Update references based on type
+    if (relation === 'parent') {
+      // Target is Parent of Current
+      if (!currentPerson.parents.includes(targetId)) currentPerson.parents.push(targetId);
+      if (!targetPerson.children.includes(currentId)) targetPerson.children.push(currentId);
+    } else if (relation === 'child') {
+      // Target is Child of Current
+      if (!currentPerson.children.includes(targetId)) currentPerson.children.push(targetId);
+      if (!targetPerson.parents.includes(currentId)) targetPerson.parents.push(currentId);
+    } else if (relation === 'spouse') {
+      // Spouses
+      if (!currentPerson.spouses.includes(targetId)) currentPerson.spouses.push(targetId);
+      if (!targetPerson.spouses.includes(currentId)) targetPerson.spouses.push(currentId);
+    }
+
+    refreshGraph();
+  };
+
+  // Helper to refresh
+  const refreshGraph = () => {
+    const generations = calculateGenerations(data.persons, 'p1');
+    const { nodes: newNodes, edges: newEdges } = buildGraphFromData(data.persons);
+    const nodesWithGen = newNodes.map(node => ({
+      ...node,
+      data: {
+        ...node.data,
+        generation: generations.get(node.id) ?? 0
+      }
+    }));
+    const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodesWithGen, newEdges, 'BT');
+    setNodes([...layoutedNodes]);
+    setEdges([...layoutedEdges]);
   };
 
   return (
@@ -311,6 +373,9 @@ export default function App() {
           onAddSpouse={() => handleAdd('spouse')}
           onRelationClick={(type) => console.log('Rel click', type)}
           onUpdate={handleUpdate}
+          onDelete={handleDelete}
+          onLink={handleLink}
+          allPersons={nodes.map(n => n.data.person)} // Pass all persons for the dropdown
         />
       )}
     </div>

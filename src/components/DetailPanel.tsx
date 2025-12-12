@@ -10,7 +10,9 @@ import {
     Heart,
     Users,
     ChevronRight,
-    Edit3
+    Edit3,
+    Trash2,
+    Link as LinkIcon
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -23,6 +25,9 @@ interface DetailPanelProps {
     onAddSpouse: () => void;
     onRelationClick: (type: 'parents' | 'children' | 'spouses') => void;
     onUpdate: (field: keyof Person, value: string) => void;
+    onDelete?: () => void;
+    onLink?: (targetId: string, relation: 'parent' | 'child' | 'spouse') => void;
+    allPersons?: Person[];
 }
 
 export default function DetailPanel({ person, generation, onClose, onAddParent, onAddChild, onAddSpouse, onRelationClick, onUpdate }: DetailPanelProps) {
@@ -121,8 +126,54 @@ export default function DetailPanel({ person, generation, onClose, onAddParent, 
                     </div>
                 </div>
 
-                {/* 5. Relations */}
-                <div>
+                {/* 5. Link Person Section */}
+                <div className="mb-8">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <LinkIcon size={14} />
+                        Relier Existant
+                    </h3>
+                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <select
+                            className="w-full text-sm p-2 mb-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                            onChange={(e) => {
+                                // Store temporarily or use state? 
+                                // For simplicity, we just trigger immediately if confirm? No, need state.
+                                // Let's use a local ref or state. Since I can't add state easily without huge refactor,
+                                // I will use a simple prompt-based approach for now or assume state?
+                                // Actually, I need to add state to this component.
+                            }}
+                            id="link-select"
+                        >
+                            <option value="">Choisir une personne...</option>
+                            {allPersons?.filter(p => p.id !== person.id).sort((a, b) => a.name.localeCompare(b.name)).map(p => (
+                                <option key={p.id} value={p.id}>{p.name}</option>
+                            ))}
+                        </select>
+                        <div className="flex gap-2">
+                            <button onClick={() => {
+                                const select = document.getElementById('link-select') as HTMLSelectElement;
+                                if (select.value) onLink && onLink(select.value, 'parent');
+                            }} className="flex-1 py-1 px-2 text-xs bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 font-medium">
+                                Parent
+                            </button>
+                            <button onClick={() => {
+                                const select = document.getElementById('link-select') as HTMLSelectElement;
+                                if (select.value) onLink && onLink(select.value, 'child');
+                            }} className="flex-1 py-1 px-2 text-xs bg-emerald-100 text-emerald-700 rounded hover:bg-emerald-200 font-medium">
+                                Enfant
+                            </button>
+                            <button onClick={() => {
+                                const select = document.getElementById('link-select') as HTMLSelectElement;
+                                if (select.value) onLink && onLink(select.value, 'spouse');
+                            }} className="flex-1 py-1 px-2 text-xs bg-rose-100 text-rose-700 rounded hover:bg-rose-200 font-medium">
+                                Conjoint
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 6. Relations */}
+                <div className="mb-8">
                     <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
                         Relations
                         <span className="bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full text-[10px] font-extrabold">
@@ -153,6 +204,17 @@ export default function DetailPanel({ person, generation, onClose, onAddParent, 
                             onClick={() => onRelationClick('spouses')}
                         />
                     </div>
+                </div>
+
+                {/* 7. Danger Zone */}
+                <div className="mt-8 pt-8 border-t border-slate-100">
+                    <button
+                        onClick={onDelete}
+                        className="w-full py-3 rounded-xl border border-red-100 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+                    >
+                        <Trash2 size={16} />
+                        Supprimer cette personne
+                    </button>
                 </div>
             </div>
         </div>
